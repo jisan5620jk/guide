@@ -47,6 +47,8 @@
         color: var(--text-primary);
         line-height: 1.8;
         overflow-x: hidden;
+        position: relative;
+        z-index: 1;
       }
 
       /* Scrollbar */
@@ -129,6 +131,22 @@
           transform: translateY(-100vh) rotate(720deg);
           opacity: 0;
         }
+      }
+
+      .copyright-boldtext {
+        font-size: clamp(58px, calc(58px + (250 - 58) * ((100vw - 320px) / (1440 - 320))), 250px);
+        font-weight: 900;
+        color: white;
+        opacity: 0.05;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: -1;
+        width: 100%;
+        text-align: center;
+        text-transform: uppercase;
       }
 
       /* Hero Section */
@@ -1525,6 +1543,79 @@
         font-weight: 800;
       }
 
+      /* Copyright Footer */
+      .copyright-footer {
+        background: #050508;
+        border-top: 1px solid var(--border-color);
+        padding: 30px 20px;
+        text-align: center;
+        position: relative;
+      }
+      .copyright-footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 2px;
+        background: var(--gradient-gold);
+        border-radius: 2px;
+      }
+      .copyright-dev {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+      .copyright-dev .dev-label {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 500;
+      }
+      .copyright-dev .dev-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        background: var(--gradient-gold);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: 1px;
+      }
+      .copyright-dev .dev-name a {
+        background: var(--gradient-gold);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+      }
+      .copyright-dev .dev-name a:hover {
+        opacity: 0.8;
+      }
+      .copyright-line {
+        margin-top: 12px;
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        opacity: 0.7;
+      }
+      .copyright-line .heart {
+        color: var(--accent-pink);
+        display: inline-block;
+        animation: heartbeat 1.5s ease-in-out infinite;
+      }
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+
       /* Responsive */
       @media (max-width: 768px) {
         .container {
@@ -1620,10 +1711,15 @@
         .dua-card {
           border: 1px solid #ccc;
         }
+        .copyright-footer {
+          background: #fff;
+        }
       }
     </style>
   </head>
   <body>
+    <h1 class="copyright-boldtext">Jisan Khan</h1>
+
     <!-- Progress Bar -->
     <div class="progress-container">
       <div class="progress-bar" id="progressBar"></div>
@@ -3247,12 +3343,24 @@
         আল্লাহ তায়ালা সকল গর্ভবতী মাকে সুস্থ, নেক সন্তান দান করুন।
       </p>
       <div class="ameen">আমীন। 🤲</div>
-      <p style="color: var(--text-muted); margin-top: 30px; font-size: 0.8rem">
-        ❤️ এই গাইড শেয়ার করুন — হয়তো কারো উ���কারে আসবে, ইনশাআল্লাহ
-      </p>
+      <!-- Copyright Footer -->
+      <div class="copyright-footer">
+        <div class="copyright-dev">
+          <span class="dev-label">Researched & Developed by</span>
+          <span class="dev-name">Jisan Khan</span>
+        </div>
+        <p class="copyright-line">
+          © <span id="copyrightYear"></span> Jisan Khan. All rights reserved.
+          Made with <span class="heart">❤️</span> for the Ummah.
+        </p>
+      </div>
     </div>
 
     <script>
+      // Copyright Year
+      document.getElementById("copyrightYear").textContent =
+        new Date().getFullYear();
+
       // ==================== PARTICLES ====================
       function createParticles() {
         const container = document.getElementById("particles");
@@ -3495,4 +3603,3 @@
     </script>
   </body>
 </html>
-
