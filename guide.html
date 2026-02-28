@@ -134,9 +134,13 @@
       }
 
       .copyright-boldtext {
-        font-size: clamp(58px, calc(58px + (250 - 58) * ((100vw - 320px) / (1440 - 320))), 250px);
+        font-size: clamp(
+          58px,
+          calc(58px + (250 - 58) * ((100vw - 320px) / (1440 - 320))),
+          250px
+        );
         font-weight: 900;
-        color: white;
+        color: var(--accent-green);
         opacity: 0.05;
         position: fixed;
         top: 50%;
@@ -1545,9 +1549,9 @@
 
       /* Copyright Footer */
       .copyright-footer {
-        background: #050508;
+        background: transparent;
         border-top: 1px solid var(--border-color);
-        padding: 30px 20px;
+        padding: 30px 0;
         text-align: center;
         position: relative;
       }
@@ -1576,7 +1580,7 @@
         font-weight: 500;
       }
       .copyright-dev .dev-name {
-        font-size: 1.1rem;
+        font-size: 2rem;
         font-weight: 700;
         background: var(--gradient-gold);
         -webkit-background-clip: text;
